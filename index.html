@@ -2,9 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
-
 <title>梁佳丽同学</title><!-- 这是网页标题 -->
 <style>
 body{
@@ -30,9 +27,6 @@ h1 span{
  
 </head>
 <body>
-
-<div id="qrcode"></div>//创建元素以生成二维码
-
 <h1 id="h1"></h1>
 <canvas></canvas> <!--canvas 画布-->
  
@@ -148,16 +142,7 @@ window.onload=function starttime(){
  
         return true;
     }
-
-  var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: "https://www.example.com",
-    width: 128,
-    height: 128,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-  });
 </script>
-
+ 
 </body>
 </html>
