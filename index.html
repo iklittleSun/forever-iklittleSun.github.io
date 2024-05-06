@@ -1,4 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>梁佳丽同学</title><!-- 这是网页标题 -->
+<style>
+body{
+  overflow: hidden;
+  margin: 0;
+}
+h1{
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform:translateY(-50%);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 40px;
+  color: #c70012;
+  padding: 0 20px;
+}
+h1 span{
+    font-size:20px;
+}
+</style>
+ 
+</head>
+<body>
+
+<!-- <audio autoplay loop>
+      <source src="background.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+</audio> -->
+
+<h1 id="h1"></h1>
+<canvas></canvas> <!--canvas 画布-->
+
+    <!-- 背景音乐 -->
+  <audio id="background-music" loop>
+      <source src="tianwailaiwu.mp3" type="audio/mpeg">
+      您的浏览器不支持 audio 标签。
+  </audio>
+
+ 
+<script>
+var canvas = document.querySelector("canvas"),
+  ctx = canvas.getContext("2d");
+ 
+var ww,wh;
+ 
+function onResize(){
+  ww = canvas.width = window.innerWidth;
+  wh = canvas.height = window.innerHeight;
+}
+ 
+ctx.strokeStyle = "red";
+ctx.shadowBlur = 25;
+ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";
+ 
+var precision = 100;
+var hearts = [];
+var mouseMoved = false;
+function onMove(e){
+  mouseMoved = true;
+  if(e.type === "touchmove"){
+    hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));
+    hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));
+  }
+  else{
+    hearts.push(new Heart(e.clientX, e.clientY));
+    hearts.push(new Heart(e.clientX, e.clientY));
+  }
+}
+ 
+var Heart = function(x,y){
+  this.x = x || Math.random()*ww;
+  this.y = y || Math.random()*wh;
+  this.size = Math.random()*2 + 1;
+  this.shadowBlur = Math.random() * 10;
+  this.speedX = (Math.random()+0.2-0.6) * 8;
+  this.speedY = (Math.random()+0.2-0.6) * 8;
+  this.speedSize = Math.random()*0.05 + 0.01;
+  this.opacity = 1;
+  this.vertices = [];
+  for (var i = 0; i < precision; i++) {
+    var step = (i / precision - 0.5) * (Math.PI * 2);
+    var vector = {
+      x : (15 * Math.pow(Math.sin(step), 3)),
+      y : -(13 * Math.cos(step) - 5 * Math.cos(2 * step) - 2 * Math.cos(3 * step) - Math.cos(4 * step)) 
+    }
+    this.vertices.push(vector);
+  }
+}
+ 
+Heart.prototype.draw = function(){
+  this.size -= this.speedSize;
+  this.x += this.speedX;
+  this.y += this.speedY;
+  ctx.save();
+  ctx.translate(-1000,this.y);
+  ctx.scale(this.size, this.size);
+  ctx.beginPath();
+  for (var i = 0; i < precision; i++) {
+    var vector = this.vertices[i];
+    ctx.lineTo(vector.x, vector.y);
+  }
+  ctx.globalAlpha = this.size;
+  ctx.shadowBlur = Math.round((3 - this.size) * 10);
+  ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";
+  ctx.shadowOffsetX = this.x + 1000;
+  ctx.globalCompositeOperation = "screen"
+  ctx.closePath();
+  ctx.fill()
+  ctx.restore();
+};
+ 
+ 
+function render(a){
+  requestAnimationFrame(render);
+ 
+  hearts.push(new Heart())
+  ctx.clearRect(0,0,ww,wh);
+  for (var i = 0; i < hearts.length; i++) {
+    hearts[i].draw();
+    if(hearts[i].size <= 0){
+      hearts.splice(i,1);
+      i--;
+    }
+  }
+}
+ 
+ 
+onResize();
+window.addEventListener("mousemove", onMove);
+window.addEventListener("touchmove", onMove);
+window.addEventListener("resize", onResize);
+requestAnimationFrame(render);
+ 
+window.onload=function starttime(){
+        time(h1,'2023,10,19');     // 在一起的时间
+        ptimer = setTimeout(starttime,1000); // 添加计时器
+}
+ 
+    function time(obj,futimg){
+        var nowtime = new Date().getTime(); // 现在时间转换为时间戳
+        var futruetime =  new Date(futimg).getTime(); // 未来时间转换为时间戳
+        var msec = nowtime-futruetime-58620000; // 毫秒 未来时间-现在时间，因为我们认识的时间是2023年10月19日的下午16:17，她在抖音上回复了我第一条消息
+        var time = (msec/1000);  // 毫秒/1000
+        var day = parseInt(time/86400); // 天  24*60*60*1000 
+        var hour = parseInt(time/3600)-24*day;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
+        var minute = parseInt(time%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
+        var second = parseInt(time%60);  // 以60秒为一整份 取余 剩下秒数
+        obj.innerHTML="梁佳丽同学<br>我们已经认识：<br>"+day+"天"+hour+"小时"+minute+"分"+second+"秒"+"啦<br><span>本来呢，感觉这份礼物没有送出去的必要了，但是感觉还是好好告个别吧。<br>（请忽略背景图和背景音乐，这里本来写的是另一份信）<br><br>不知道时候开始，我们变得越来越无话不谈，那时候仿佛有说不完的话；<br>又是不知道什么时候开始，你开始让我和你保持距离，让我别那么敏感（原来真的喜欢别人是这样的感觉）<br>其实你并没有什么错<br>只是我误以为，一个人和我每天聊那么多话，分享彼此日常，谈论恋爱观，一起吐槽导师……<br>这些的这些，让我有了一些莫须有的错觉<br>还记得我问过你，过几年我们还不一定认识怎么办<br>你当时是那么肯定一定会认识的，说要抱我大腿（知道你是开玩笑的啦）<br>真是又一次认识到了自己是一个情感白痴hhh<br>可能你不知道，主动加你的微信是我长这么大以来，最大胆的一次赌博<br>失败男人第一条，喜欢上一个不喜欢你的女孩<br>可是毕竟,谁会甘心和喜欢的人只当朋友呢hhh<br><br>总之还是谢谢你，在我脆弱的那段时间，填满了我的内心~.</span>"
+ 
+        return true;
+    }
+
+ // 获取音乐元素
+      var music = document.getElementById('background-music');
+
+  // 用户点击页面任何地方都尝试播放音乐
+  document.addEventListener('click', function () {
+    music.play().catch(function(e) {
+        // 如果发生错误，可以在控制台打印出来
+        console.error('音乐播放失败:', e);
+    });
+}, {once: true}); // 只监听一次
+
+</script>
+
+
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,3 +230,4 @@
 
 </body>
 </html>
+ -->
