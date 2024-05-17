@@ -156,7 +156,7 @@ window.onload=function starttime(){
         var meettime = (meetmsec/1000);  // 毫秒/1000
         var meetday = parseInt(time/86400) - 211; // 天  24*60*60*1000 
         var meethour = parseInt(meettime/3600)-24*meetday-5064;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
-        var meetminute = parseInt(meettime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
+        var meetminute = parseInt(meettime%3600/60)-10; // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
         var meetsecond = parseInt(meettime%60);  // 以60秒为一整份 取余 剩下秒数
 
         // obj.innerHTML="梁佳丽同学<br>我们已经认识："+day+"天"+hour+"小时"+minute+"分"+second+"秒"+"啦<br><span>"
