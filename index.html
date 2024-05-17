@@ -152,7 +152,7 @@ window.onload=function starttime(){
         var minute = parseInt(time%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
         var second = parseInt(time%60);  // 以60秒为一整份 取余 剩下秒数
 
-        var meetmsec = nowtime-futruetime-51000000; // 毫秒 未来时间-现在时间，因为我们见面的时间是2024年5月17日的下午2:10
+        var meetmsec = nowtime-futruetime-50460000; // 毫秒 未来时间-现在时间，因为我们见面的时间是2024年5月17日的下午2:10
         var meettime = (meetmsec/1000);  // 毫秒/1000
         var meetday = parseInt(meettime/86400) - 212; // 天  24*60*60*1000 
         var meethour = parseInt(meettime/3600)-24*meetday;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
