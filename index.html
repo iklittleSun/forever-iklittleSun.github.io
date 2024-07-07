@@ -193,15 +193,42 @@ function time(obj,futimg){
     var meetminute = parseInt(meettime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
     var meetsecond = parseInt(meettime%60);  // 以60秒为一整份 取余 剩下秒数
 
+    var qianshoumsec = msec-22533780000; // 毫秒 未来时间-现在时间，因为我们见面的时间是2024年7月6日的上午11:40
+    var qianshoutime = (qianshoumsec/1000);  // 毫秒/1000
+    var qianshouday = parseInt(qianshoutime/86400); // 天  24*60*60*1000 
+    var qianshouhour = parseInt(qianshoutime/3600)-24*qianshouday;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
+    var qianshouminute = parseInt(qianshoutime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
+    var qianshousecond = parseInt(qianshoutime%60);  // 以60秒为一整份 取余 剩下秒数
+
+    var jiewenmsec = msec-22550580000; // 毫秒 未来时间-现在时间，因为我们见面的时间是2024年7月7日的下午4:20
+    var jiewentime = (jiewenmsec/1000);  // 毫秒/1000
+    var jiewenday = parseInt(jiewentime/86400); // 天  24*60*60*1000 
+    var jiewenhour = parseInt(jiewentime/3600)-24*jiewenday;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
+    var jiewenminute = parseInt(jiewentime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
+    var jiewensecond = parseInt(jiewentime%60);  // 以60秒为一整份 取余 剩下秒数
+
     obj.innerHTML="<span style='font-family:serif; font-size:80px;'>梁佳丽</span>同学<br>我们已经认识：<span style=' font-size:70px;'>" + day 
        + "</span>天<span style=' font-size:70px;'>" + hour 
        + "</span>小时<span style=' font-size:70px;'>" + minute 
       + "</span>分<span style=' font-size:70px;'>" + second 
        + "</span>秒啦<br><br>"  
+        
         + "我们第一次见面已经：<span style=' font-size:70px;'>" + meetday 
         + "</span>天<span style=' font-size:70px;'>" + meethour
         + "</span>小时<span style=' font-size:70px;'>" + meetminute
         + "</span>分<span style=' font-size:70px;'>" + meetsecond 
+        + "</span>秒啦<br><br>"  
+
+        + "我们第一次牵手已经：<span style=' font-size:70px;'>" + qianshouday 
+        + "</span>天<span style=' font-size:70px;'>" + qianshouhour
+        + "</span>小时<span style=' font-size:70px;'>" + qianshouminute
+        + "</span>分<span style=' font-size:70px;'>" + qianshousecond 
+        + "</span>秒啦<br><br>"  
+
+        + "我们第一次接吻已经：<span style=' font-size:70px;'>" + jiewenday 
+        + "</span>天<span style=' font-size:70px;'>" + jiewenhour
+        + "</span>小时<span style=' font-size:70px;'>" + jiewenminute
+        + "</span>分<span style=' font-size:70px;'>" + jiewensecond 
         + "</span>秒啦<br><br>"  
         + "##########################<br>" 
         + "#&nbsp;&nbsp;我知道被人放弃的滋味不好受&nbsp;&nbsp;#<br>"
@@ -224,5 +251,5 @@ document.addEventListener('click', function () {
 
 </script>
 
-</body>
+</body>+789
 </html>
