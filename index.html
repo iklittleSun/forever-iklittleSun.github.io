@@ -207,12 +207,12 @@ function time(obj,futimg){
     var jiewenminute = parseInt(jiewentime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
     var jiewensecond = parseInt(jiewentime%60);  // 以60秒为一整份 取余 剩下秒数
 
-    var lovemsec = msec-25390620000; // 毫秒 未来时间-现在时间，因为我们相恋的时间是2024年8月8日的下午13:14分
-    var lovetime = (lovemsec/1000);  // 毫秒/1000
-    var loveday = parseInt(lovetime/86400); // 天  24*60*60*1000 
-    var lovehour = parseInt(lovetime/3600)-24*loveday;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
-    var loveminute = parseInt(lovetime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
-    var lovesecond = parseInt(lovetime%60);  // 以60秒为一整份 取余 剩下秒数
+    var xianglianmsec = msec-25304220000; // 毫秒 未来时间-现在时间，因为我们相恋的时间是2024年8月8日的下午13:14
+    var xiangliantime = (xianglianmsec/1000);  // 毫秒/1000
+    var xianglianday = parseInt(xiangliantime/86400); // 天  24*60*60*1000 
+    var xianglianhour = parseInt(xiangliantime/3600)-24*xianglianday;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
+    var xianglianminute = parseInt(xiangliantime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
+    var xiangliansecond = parseInt(xiangliantime%60);  // 以60秒为一整份 取余 剩下秒数
 
     obj.innerHTML="<span style='font-family:serif; font-size:80px;'>梁佳丽</span>同学<br>我们已经认识：<span style=' font-size:70px;'>" + day 
        + "</span>天<span style=' font-size:70px;'>" + hour 
@@ -238,12 +238,11 @@ function time(obj,futimg){
         + "</span>分<span style=' font-size:70px;'>" + jiewensecond 
         + "</span>秒啦<br><br>"  
 
-        + "我们相恋已经：<span style=' font-size:70px;'>" + loveday 
-        + "</span>天<span style=' font-size:70px;'>" + lovehour
-        + "</span>小时<span style=' font-size:70px;'>" + loveminute
-        + "</span>分<span style=' font-size:70px;'>" + lovesecond 
-        + "</span>秒咯<br><br>"  
-
+        + "我们相恋已经：<span style=' font-size:70px;'>" + xianglianday 
+        + "</span>天<span style=' font-size:70px;'>" + xianglianhour
+        + "</span>小时<span style=' font-size:70px;'>" + xianglianminute
+        + "</span>分<span style=' font-size:70px;'>" + xiangliansecond 
+        + "</span>秒啦<br><br>"  
         + "##########################<br>" 
         + "#&nbsp;&nbsp;我知道被人放弃的滋味不好受&nbsp;&nbsp;#<br>"
         + "#&nbsp;&nbsp;这次就让我坚定的选择你吧&nbsp;&nbsp;#<br>"
