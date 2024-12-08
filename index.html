@@ -207,7 +207,7 @@ function time(obj,futimg){
     var jiewenminute = parseInt(jiewentime%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
     var jiewensecond = parseInt(jiewentime%60);  // 以60秒为一整份 取余 剩下秒数
 
-    var xianglianmsec = msec-25304220000; // 毫秒 未来时间-现在时间，因为我们相恋的时间是2024年8月8日的下午13:14
+    var xianglianmsec = msec-25217820000; // 毫秒 未来时间-现在时间，因为我们相恋的时间是2024年8月8日的下午13:14
     var xiangliantime = (xianglianmsec/1000);  // 毫秒/1000
     var xianglianday = parseInt(xiangliantime/86400); // 天  24*60*60*1000 
     var xianglianhour = parseInt(xiangliantime/3600)-24*xianglianday;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
